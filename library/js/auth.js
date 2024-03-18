@@ -40,7 +40,8 @@ const toggleAuthUI = (isLoggedIn) => {
 
 const init = async () => {
   let user;
-  let accessToken;
+  let swData;
+
   const url = new URLSearchParams(window.location.search);
   const code = url.get('code');
   const client = await window.auth0.createAuth0Client({
@@ -62,13 +63,21 @@ const init = async () => {
   }
 
   const isLoggedIn = await client.isAuthenticated();
-  console.log('isLoggedIn', isLoggedIn);
+
   if (isLoggedIn) {
     accessToken = await client.getTokenSilently();
     user = await client.getUser();
+    swData = await window.runQuery();
+    console.log('SWAPI:', swData);
   }
 
+  if (isLoggedIn && window.runQuery) {
+    swData = await window.runQuery();
+  }
+
+  console.log('isLoggedIn', isLoggedIn);
   console.log('user', user);
+  console.log('swapi:', swData);
 
   window.Webflow = window.Webflow || [];
   window.Webflow.push(handleAccountBtns(client));

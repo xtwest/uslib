@@ -5,6 +5,7 @@ level 2 - Add vehicles and starships
 level 3 - Show all fields
 */
 
+const swapiURL = 'https://swapi-graphql.netlify.app/.netlify/functions/index';
 const queryProps = [
   'name',
   `homeworld {
@@ -53,24 +54,23 @@ const buildQuery = () => {
 const runQuery = async () => {
   const query = buildQuery();
 
-  const swData = await fetch(
-    'https://swapi-graphql.netlify.app/.netlify/functions/index',
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify({
-        query,
-        variables: { personID: '13' },
-      }),
-    }
-  ).then((r) => r.json());
+  const swData = await fetch(swapiURL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({
+      query,
+      variables: { personID: '13' },
+    }),
+  }).then((r) => r.json());
   // .then((data) => console.log('data returned:', data.data));
   const {
     data: { person },
   } = swData;
 
   window.auth.person = person;
+
+  return person;
 };
