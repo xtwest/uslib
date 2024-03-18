@@ -67,8 +67,6 @@ const init = async () => {
   if (isLoggedIn) {
     accessToken = await client.getTokenSilently();
     user = await client.getUser();
-    swData = await window.runQuery();
-    console.log('SWAPI:', swData);
   }
 
   if (isLoggedIn && window.runQuery) {
