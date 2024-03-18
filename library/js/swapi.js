@@ -75,4 +75,4 @@ const runQuery = () => {
     .then((data) => console.log('data returned:', data.data));
 };
 
-window.runQuery = runQuery;
+runQuery();
