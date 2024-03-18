@@ -69,8 +69,8 @@ const init = async () => {
     user = await client.getUser();
   }
 
-  if (isLoggedIn && window.runQuery) {
-    swData = await window.runQuery();
+  if (isLoggedIn && runQuery) {
+    swData = await runQuery();
   }
 
   console.log('isLoggedIn', isLoggedIn);
