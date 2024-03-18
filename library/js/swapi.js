@@ -5,8 +5,6 @@ level 2 - Add vehicles and starships
 level 3 - Show all fields
 */
 
-const params = new URLSearchParams(window.location.search);
-const level = params.get('level');
 const queryProps = [
   'name',
   `homeworld {
@@ -37,25 +35,42 @@ const queryProps = [
       title
     }
   }`,
-].slice(0, Number(level) + 1).join('\n')
+];
 
-const finalQuery = `query Query($personID: ID) {
-  person(personID: $personID) {
-    ${queryProps}
-  }
-}`;
+const buildQuery = () => {
+  const params = new URLSearchParams(window.location.search);
+  const level = Number(params.get('level'));
 
-const runQuery = () => {
-  fetch('https://swapi-graphql.netlify.app/.netlify/functions/index', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
-    body: JSON.stringify({ query: finalQuery, variables: { personID: '13' } }),
-  })
-    .then((r) => r.json())
-    .then((data) => console.log('data returned:', data.data));
+  if (level === undefined) return;
+
+  return `query Query($personID: ID) {
+    person(personID: $personID) {
+      ${queryProps.slice(0, Number(level) + 1).join('\n')}
+    }
+  }`;
 };
 
-runQuery();
+const runQuery = async () => {
+  const query = buildQuery();
+
+  const swData = await fetch(
+    'https://swapi-graphql.netlify.app/.netlify/functions/index',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        query,
+        variables: { personID: '13' },
+      }),
+    }
+  ).then((r) => r.json());
+  // .then((data) => console.log('data returned:', data.data));
+  const {
+    data: { person },
+  } = swData;
+
+  window.auth.person = person;
+};

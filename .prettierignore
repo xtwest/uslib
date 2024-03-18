@@ -1,0 +1,15 @@
+# See https://prettier.io/docs/en/ignore.html for more about ignoring files.
+
+# Defaults
+# -----------------
+/**/node_modules/
+.DS_Store
+npm-debug.log*
+
+# User Configuration
+# ------------------
+.vscode/
+
+# Project Specific
+# -----------------
+*.zip
