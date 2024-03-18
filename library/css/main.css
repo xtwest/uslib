@@ -1,0 +1,7 @@
+.account-button.authenticated[data-account-auth],
+.auth [data-account] {
+    display: none;
+}
+.auth .account-button.authenticated[data-account-auth] {
+    display: flex;
+}

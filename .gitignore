@@ -1,0 +1,14 @@
+# Defaults
+# -----------------
+/**/node_modules/
+.DS_Store
+npm-debug.log*
+
+# User Configuration
+# ------------------
+.vscode/
+
+# Project Specific
+# -----------------
+*.zip
+/temp

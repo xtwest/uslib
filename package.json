@@ -1,0 +1,19 @@
+{
+  "name": "okta-demo",
+  "version": "0.0.1",
+  "description": "Okta Demo",
+  "main": "library/js/auth.js",
+  "scripts": {
+    "prepare": "husky && husky install"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css}": "prettier --write"
+  }
+}
