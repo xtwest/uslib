@@ -5,7 +5,6 @@ level 2 - Add vehicles and starships
 level 3 - Show all fields
 */
 
-// let levelQuery;
 const params = new URLSearchParams(window.location.search);
 const level = params.get('level');
 const queryProps = [
@@ -39,53 +38,6 @@ const queryProps = [
     }
   }`,
 ].slice(0, Number(level) + 1).join('\n')
-// let props = {
-//   0: 'name',
-//   1: `homeworld {
-//       name
-//     }
-//     birthYear
-//     eyeColor
-//     gender
-//     hairColor
-//     height
-//     mass
-//     skinColor
-//     species {
-//       name
-//     }`,
-//   2: `starshipConnection {
-//         starships {
-//           name
-//         }
-//       }
-//       vehicleConnection {
-//         vehicles {
-//           name
-//         }
-//       }`,
-//   3: `filmConnection {
-//         films {
-//           title
-//         }
-//       }`,
-// };
-
-// if (level === '0') {
-//   levelQuery = props['0'];
-// }
-
-// if (level === '1') {
-//   levelQuery = `${props['0']}\n${props['1']}`;
-// }
-
-// if (level === '2') {
-//   levelQuery = `${props['0']}\n${props['1']}\n${props['2']}`;
-// }
-
-// if (level === '3') {
-//   levelQuery = `${props['0']}\n${props['1']}\n${props['2']}\n${props['3']}`;
-// }
 
 const finalQuery = `query Query($personID: ID) {
   person(personID: $personID) {
