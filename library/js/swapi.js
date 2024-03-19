@@ -40,9 +40,9 @@ const queryProps = [
 
 const buildQuery = () => {
   const params = new URLSearchParams(window.location.search);
-  const level = Number(params.get('level'));
+  const level = params.get('level');
 
-  if (level === undefined) return;
+  if (level === null) return;
 
   return `query Query($personID: ID) {
     person(personID: $personID) {
