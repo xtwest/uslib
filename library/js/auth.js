@@ -38,6 +38,20 @@ const toggleAuthUI = (isLoggedIn) => {
   else document.documentElement.classList.remove('auth');
 };
 
+const updateProfileInfo = (user) => {
+  /* 
+  <div class="w-layout-hflex state-layer menu-item">
+    <div class="avatar">
+      <div class="label primary">BC</div>
+    </div>
+    <div class="w-layout-vflex menu-item-content">
+      <div class="label medium bold">Butch Cassidy</div>
+      <div class="label small regular on-surface-variant">bcassidy1866@wildbunch.org</div>
+    </div>
+  </div>
+  */
+};
+
 const init = async () => {
   let user;
   let swData;

@@ -54,6 +54,8 @@ const buildQuery = () => {
 const runQuery = async () => {
   const query = buildQuery();
 
+  if (!query) return;
+
   const swData = await fetch(swapiURL, {
     method: 'POST',
     headers: {
