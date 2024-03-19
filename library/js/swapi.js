@@ -40,13 +40,13 @@ const queryProps = [
 
 const buildQuery = () => {
   const params = new URLSearchParams(window.location.search);
-  const level = params.get('level');
+  const level = Number(params.get('level') || 0);
 
-  if (level === null) return;
+  if (level < 0 || level > 3) return;
 
   return `query Query($personID: ID) {
     person(personID: $personID) {
-      ${queryProps.slice(0, Number(level) + 1).join('\n')}
+      ${queryProps.slice(0, level + 1).join('\n')}
     }
   }`;
 };
