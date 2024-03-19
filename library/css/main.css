@@ -1,7 +1,11 @@
+.uui-banner16_component,
 .account-button.authenticated[data-account-auth],
 .auth [data-account] {
     display: none;
 }
 .auth .account-button.authenticated[data-account-auth] {
     display: flex;
+}
+.auth .uui-banner16_component {
+    display: block;
 }
