@@ -65,7 +65,7 @@ const runQuery = async () => {
       variables: { personID: '13' },
     }),
   }).then((r) => r.json());
-  // .then((data) => console.log('data returned:', data.data));
+
   const {
     data: { person },
   } = swData;
