@@ -9,3 +9,7 @@
 .auth .uui-banner16_component {
     display: block;
 }
+.auth .avatar img,
+.auth .state-layer[data-account-auth] .label img {
+    border-radius: 100px;
+}

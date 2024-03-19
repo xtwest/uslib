@@ -39,17 +39,22 @@ const toggleAuthUI = (isLoggedIn) => {
 };
 
 const updateProfileInfo = (user) => {
-  /* 
-  <div class="w-layout-hflex state-layer menu-item">
+  if (!user) return;
+
+  const authAccountCTA = document.querySelector('[data-account-auth] .label');
+  const profileWrapper = document.querySelector('[data-id=account-profile]');
+
+  authAccountCTA.innerHTML = `<img src="${user.picture}"/>`;
+
+  profileWrapper.innerHTML = `
     <div class="avatar">
-      <div class="label primary">BC</div>
+      <img src="${user.picture}"/>
     </div>
     <div class="w-layout-vflex menu-item-content">
-      <div class="label medium bold">Butch Cassidy</div>
-      <div class="label small regular on-surface-variant">bcassidy1866@wildbunch.org</div>
+      <div class="label medium bold">${user.name}</div>
+      <div class="label small regular on-surface-variant">${user.email}</div>
     </div>
-  </div>
-  */
+  `;
 };
 
 const init = async () => {
@@ -94,6 +99,7 @@ const init = async () => {
   window.Webflow = window.Webflow || [];
   window.Webflow.push(handleAccountBtns(client));
   window.Webflow.push(toggleAuthUI(isLoggedIn));
+  window.Webflow.push(updateProfileInfo(user));
 };
 
 init();
