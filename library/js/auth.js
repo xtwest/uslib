@@ -94,7 +94,6 @@ const init = async () => {
 
   console.log('isLoggedIn', isLoggedIn);
   console.log('user', user);
-  console.log('swapi:', swData);
 
   window.Webflow = window.Webflow || [];
   window.Webflow.push(handleAccountBtns(client));
